@@ -1,0 +1,186 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: var(--bg-color) !important;
+}
+
+:root {
+    --font-color: #0d0d0d;
+    --meta-color: #606060;
+    --bg-color: #fafafa;
+}
+
+[data-theme=dark] {
+    --font-color: #fff;
+    --meta-color: #aaa;
+    --bg-color: #1f1f1f;
+}
+
+body,
+html {
+    position: relative;
+    font-size: 10px !important;
+    font-family: Roboto, sans-serif !important;
+    overflow-x: hidden;
+    
+}
+
+h1, h2 {
+    color: var(--font-color);
+}
+
+hr {
+    border-color: var(--font-color) !important;
+}
+
+.min-height-full {
+    min-height: 100vh
+}
+
+::-webkit-input-placeholder {
+    color: #b7b7b7
+}
+
+::placeholder {
+    color: #b7b7b7
+}
+
+.thumbnailComponent {
+    margin-bottom: 3em
+}
+
+.componenTitle {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    margin-top: 24px;
+    color: var(--font-color);
+}
+
+.thumbnailImageContainer {
+    position: relative;
+    margin-bottom: 1em;
+    display: block;
+    float: left;
+    border-radius: 12px;
+    overflow: hidden
+}
+
+.mobile-column .thumbnailImageContainer,
+.sidebar .thumbnailImageContainer {
+    border-radius: 8px
+}
+
+.mobile-home .thumbnailImageContainer {
+    border-radius: 0
+}
+
+.time-overlay {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 4px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .8);
+    opacity: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    letter-spacing: .5px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.2rem;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -ms-inline-flexbox;
+    display: inline-flex
+}
+
+
+
+.groupBelow {
+    display: inline-block;
+    /*width: 100%*/
+}
+
+.title {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 2rem;
+    display: block;
+    overflow: hidden;
+    white-space: normal;
+    color: var(--font-color);
+}
+
+.mobile-column .title {
+    font-weight: 500
+}
+
+.groupBelow .title {
+    float: left;
+    margin-top: .25rem
+}
+
+.groupBeside {
+    display: inline-block;
+    width: 100%
+}
+
+.groupBeside .title {
+    max-width: 15em
+}
+
+.groupBeside .thumbnailImageContainer {
+    margin-right: 12px
+}
+
+.avatar {
+    border-radius: 64px;
+    background-color: #ddd;
+    clear: left;
+    margin-top: 4px;
+
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    background-size: 36px 36px;
+}
+
+.avatar,
+.groupBelow .thumbnailTitle {
+    float: left
+}
+
+.videoDetails {
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 2rem;
+    margin-top: 4px;
+    color: var(--meta-color)
+}
+
+.channel-small .videoDetails,
+.sidebar .videoDetails,
+.watch-later-list .videoDetails {
+    font-size: 1.2rem;
+    line-height: 1.7rem
+}
+
+
+.groupBelow .videoDetails {
+    clear: both
+}
+
+.videoStats {
+    margin-bottom: 16px
+}
