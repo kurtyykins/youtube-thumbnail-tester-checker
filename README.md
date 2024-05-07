@@ -1,4 +1,11 @@
-# YouTube_Thumbnail_Tester
-A simple app to test multiple potential thumbnails for YouTube videos and see how they will most commonly appear on web and mobile
+# YouTube Thumbnail Tester & Checker
 
-Allows you to set a custom channel name and title. It will generate random numbers for the video stats (duration, views, and publish time)
+Test and check thumbnails by seeing how they will most commonly appear on YouTube
+
+Places uploaded images into similar formatting to both web and mobile versions of YouTube
+
+Option to preview light and dark mode
+
+Allows the option to add custom channel name and title. Can also swap the placeholder channel logo to preview different ones
+
+It will generate random numbers for the video stats (duration, views, and publish time)
