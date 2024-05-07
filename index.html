@@ -5,93 +5,184 @@
     <title>YouTube Thumbnail Tester</title>
     <link rel="stylesheet" href="./youtubestyles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<style>
-    .xScrollContainer {
-        width: 100%;
-        height: 100%;
-        white-space: nowrap;
-        position: relative;
-        overflow-x: scroll;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .yScrollContainer {
-        width: 100%;
-        height: 520px;
-        overflow-x: hidden;
-        overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .form-control,
-    .input-group-text,
-    .btn {
-        font-size: 2rem;
-    }
-</style>
+<style></style>
 
 <body>
+    <div class="container" data-theme="light">
 
-    <div class="min-height-full" id="min-height-full" data-theme="light">
-        <div class="container mt-3">
-
-            <div class="row mt-3 text-center">
-
-                <div class="col-12 mt-3">
-                    <h1>YouTube Thumbnail Tester</h1>
-                </div>
-
+        <!-- CONTROLS -->
+        <div class="row text-center">
+            <div class="col-12 p-3">
                 <form>
-                    <div class="col-12">
 
-                        <div class="row mt-3">
-                            <div class="col-12">
-                                <input type="file" class="form-control" id="thumbnailInput" accept="image/*"
-                                    onchange="handleInfoChange(event)" multiple>
+                    <div class="row pb-3">
+                        <div class="col-12">
+                            <h1>YouTube Thumbnail Tester & Checker</h1>
+                        </div>
+                    </div>
+
+                    <div class="row pb-3">
+
+                        <div class="col-xl-3 col-12 p-1">
+                            <input type="file" class="form-control" id="thumbnailInput" accept="image/*"
+                                onchange="handleInfoChange(event)" multiple>
+                        </div>
+
+                        <div class="col-xl-4 col-12 p-1">
+                            <div class="input-group">
+                                <span class="input-group-text">Channel Name</span>
+                                <input type="text" class="form-control" id="channelNameInput" placeholder="Channel Name"
+                                    onchange="handleInfoChange(event)" value="ChannelName">
                             </div>
                         </div>
 
-                        <div class="row mt-3">
-                            <div class="col-6">
-                                <div class="input-group">
-                                    <span class="input-group-text">Channel Name</span>
-                                    <input type="text" class="form-control" id="channelNameInput"
-                                        placeholder="Channel Name" onchange="handleInfoChange(event)"
-                                        value="Channel Name">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="input-group">
-                                    <span class="input-group-text">Video Title</span>
-                                    <input type="text" class="form-control" id="videoTitleInput"
-                                        placeholder="Video Title" onchange="handleInfoChange(event)"
-                                        value="An Incredibly Good YouTube Video">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mt-3 mb-3">
-                            <div class="col-12">
-                                <button type="button" id="refreshInfo" class="btn btn-primary btn-lg mx-1"
-                                    onclick="handleInfoChange()">Refresh</button>
-                                <button type="button" id="darkModeToggle" class="btn btn-dark btn-lg mx-1"
-                                    onclick="toggleDarkMode()">Toggle Light/Dark Mode</button>
-                                <button type="button" class="btn btn-danger btn-lg mx-1"
-                                    onclick="resetPage()">Reset</button>
+                        <div class="col-xl-5 col-12 p-1">
+                            <div class="input-group">
+                                <span class="input-group-text">Video Title</span>
+                                <input type="text" class="form-control" id="videoTitleInput" placeholder="Video Title"
+                                    onchange="handleInfoChange(event)"
+                                    value="This Is An Incredibly Good Video Click Now!">
                             </div>
                         </div>
 
                     </div>
+
+                    <div class="row pb-3">
+
+                        <div class="col-12">
+                            <button type="button" id="refreshInfo" class="btn btn-primary btn-lg mx-1"
+                                onclick="handleInfoChange()"><i class="fa fa fa-refresh"></i> Update</button>
+                            <button type="button" id="darkModeToggle" class="btn btn-dark btn-lg mx-1"
+                                onclick="toggleDarkMode()"><i class="fa fa-moon-o"></i> Dark Mode</button>
+                            <button type="button" class="btn btn-danger btn-lg mx-1" onclick="resetPage()"><i
+                                    class="fa fa-trash-o"></i> Reset</button>
+                        </div>
+
+                    </div>
+
                 </form>
+            </div>
+        </div>
+
+        <!-- THUMBNAIL PREVIEWS-->
+        <div class="row">
+            <div class="col-12 p-3" id="thumbnailPreviewContainer" style="display: none;">
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-12 p-3">
+
+                        <div class="mb-3">
+                            <h2 class="p-3">Web Home Page Large</h2>
+                        </div>
+                        <div class="xScrollContainer">
+                            <div id="webHomePageLargeThumbnails"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 p-3">
+
+                        <div class="mb-3">
+                            <h2 class="p-3">Web Home Page Small</h2>
+                        </div>
+                        <div class="xScrollContainer">
+                            <div id="webHomePageSmallThumbnails"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-12 px-3">
+
+                        <div class="d-flex flex-column flex-xl-row align-items-center justify-content-xl-evenly">
+
+                            <div class="" style="width: 700px;">
+
+                                <div class="mb-3 mt-5">
+                                    <h2 class="text-center p-3">Web Search & History</h2>
+                                </div>
+                                <div class="yScrollContainer">
+                                    <div id="webSearchThumbnails"></div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="" style="width: 420px;">
+
+                                <div class="mb-3 mt-5">
+                                    <h2 class="text-center p-3">Web Video Sidebar</h2>
+                                </div>
+                                <div class="yScrollContainer">
+                                    <div id="webSidebarThumbnails"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 px-3">
+
+                        <div class="d-flex flex-column flex-xl-row align-items-center justify-content-xl-evenly">
+
+                            <div class="" style="width: 370px;">
+
+                                <div class="mb-3 mt-5">
+                                    <h2 class="text-center p-3">Mobile Column</h2>
+                                </div>
+                                <div class="yScrollContainer">
+                                    <div id="mobileColumnThumbnails"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="" style="width: 405px;">
+
+                                <div class="mb-3 mt-5">
+                                    <h2 class="text-center p-3">Mobile Full Width</h2>
+                                </div>
+                                <div class="yScrollContainer">
+                                    <div id="mobileFullWidthThumbnails"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr>
 
             </div>
-
-            <div id="thumbnailPreviewContainer" style="display: none;"></div>
-
         </div>
+
+
+        <!-- DRAG AND DROG BOX -->
+        <div class="row">
+            <div class="col-12 p-3" id="dropAreaContainer">
+                <div class="dropArea text-center" id="dropArea" ondrop="handleFileDrop(event)"
+                    ondragover="handleDragover(event)" ondragleave="handleDragleave(event)">
+                    <h1 class="dropText"><i class="fa fa-upload" style="font-size:120px;"></i><br><br>Drop Thumbnails
+                        Here</h1>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
@@ -100,18 +191,20 @@
     let currentThemeSetting = "light";
     let numberOfThumbnails = 0;
     let channelLogoSrc = "url('Logo_Circle.png')";
-    let channelNameInput, videoTitleInput;
+    let channelNameInput = '', videoTitleInput = '';
 
-
+    // Function to toggle between light and dark modes
     function toggleDarkMode() {
 
         const newTheme = currentThemeSetting === "dark" ? "light" : "dark";
-        const darkModeButton = document.getElementById('darkModeToggle')
+        const darkModeButton = document.getElementById('darkModeToggle');
 
         if (newTheme === "dark") {
+            darkModeButton.innerHTML = `<i class="fa fa-sun-o"></i> Light Mode`;
             darkModeButton.classList.add('btn-light');
             darkModeButton.classList.remove('btn-dark');
         } else {
+            darkModeButton.innerHTML = `<i class="fa fa-moon-o"></i> Dark Mode`;
             darkModeButton.classList.add('btn-dark');
             darkModeButton.classList.remove('btn-light');
         }
@@ -121,128 +214,159 @@
 
     }
 
+    // Function to handle drag and dropped files and pass to file input
+    function handleFileDrop(event) {
+
+        event.preventDefault();
+        const droppedFiles = event.dataTransfer.files;
+        const fileInput = document.getElementById('thumbnailInput');
+
+        if (droppedFiles && droppedFiles[0].type.startsWith('image/')) {
+            fileInput.files = event.dataTransfer.files;
+        }
+
+        handleInfoChange(event);
+
+    }
+
+
+    function handleDragover(event) {
+
+        event.preventDefault();
+        document.getElementById('dropArea').classList.add('dropAreaHighlight');
+
+    }
+
+    function handleDragleave(event) {
+
+        document.getElementById('dropArea').classList.remove('dropAreaHighlight');
+
+    }
+
     function resetPage() {
 
         location.reload();
 
     }
 
+    // Function to update display to show thumbnails if uploaded
     function handleInfoChange(event) {
 
-        const previewContainer = document.getElementById('thumbnailPreviewContainer');
         let files = document.getElementById('thumbnailInput').files;
-        numberOfThumbnails = files.length;
-        channelNameInput = document.getElementById('channelNameInput').value;
-        videoTitleInput = document.getElementById('videoTitleInput').value;
-        
+        let tempFileArray = [];
 
-        if (numberOfThumbnails > 0) {
-            previewContainer.style.display = "block";
-            previewContainer.innerHTML = generateThumbnailPreviews(files);
-        } else {
-            previewContainer.style.display = "none";
+        // Check files are images by creating a new array rejecting non-images
+        for (let i = 0; i < files.length; i++) {
+            if (files[i].type.startsWith('image/')) {
+                tempFileArray.push(files[i]);
+            } else {
+                console.log(`File ${i + 1}: ${files[i].name} is not an image.`);
+            }
         }
 
+        files = tempFileArray;
+        numberOfThumbnails = files.length;
+
+        channelNameInput = document.getElementById('channelNameInput').value;
+        videoTitleInput = document.getElementById('videoTitleInput').value;
+        const previewContainer = document.getElementById('thumbnailPreviewContainer');
+        const dropAreaContainer = document.getElementById('dropAreaContainer');
+
+        // Show and hide containers
+        if (numberOfThumbnails > 0) {
+
+            previewContainer.style.display = "block";
+            dropAreaContainer.style.display = "none";
+
+        } else {
+
+            dropAreaContainer.style.display = "flex";
+            previewContainer.style.display = "none";
+
+        }
+
+        // Prepare and display HTML code for each thumbnail
+        generateThumbnailPreviews(files);
+
     }
+
+
+    // GENERATE THUMBNAIL HTML
 
     function generateThumbnailPreviews(files) {
 
-        let thumbnailHTML = '';
-
-        thumbnailHTML += `<hr><div class="row">`;
-        thumbnailHTML += generateThumbnailsHomePageLarge(files);
-        thumbnailHTML += `</div><hr><div class="row">`;
-        thumbnailHTML += generateThumbnailsHomePageSmall(files);
-        thumbnailHTML += `</div><hr><div class="row">`
-        thumbnailHTML += generateThumbnailsHomePageSidebar(files);
-        thumbnailHTML += generateThumbnailsMobileColumn(files);
-        thumbnailHTML += generateThumbnailsMobileFullWidth(files);
-        thumbnailHTML += `</div><hr>`;
-
-        return thumbnailHTML;
-    }
-
-    function generateThumbnailsHomePageLarge(files) {
-
-        let sectionHeader = 'Web Home Page Large';
-        let outputHTML = `
-            <div class="col-12">
-                <div class="thumbnailComponent">
-                    <div class="componenTitle">${sectionHeader}</div>
-                    <div class="xScrollContainer"> 
-        `;
+        let OutputHTMLHomePageLarge = '';
+        let OutputHTMLHomePageSmall = '';
+        let OutputHTMLWebHistory = '';
+        let OutputHTMLSidebar = '';
+        let OutputHTMLMobileColumn = '';
+        let OutputHTMLMobileFullWidth = '';
 
         for (let i = 0; i < numberOfThumbnails; i++) {
 
             let fileURL = URL.createObjectURL(files[i]);
-            let viewStatsInput = (Math.floor(Math.random() * 16) + 1) + 'K views • ' + (Math.floor(Math.random() * 24) + 2) + ' hours ago';
             let videoDurationInput = (Math.floor(Math.random() * 29) + 10) + ':' + (Math.floor(Math.random() * 29) + 10);
 
-            outputHTML += `
-                        <div class="thumbnailGroup groupBelow px-1">
-                            <div class="thumbnailImageContainer">
-                                <img class="thumbnailImage" width="360" height="202" alt="thumbnail" src="${fileURL}">
-                                <div class="clearfix"></div>
-                                <div class="time-overlay">${videoDurationInput}</div>
-                            </div>
-                            <div class="avatar" style="background-image: ${channelLogoSrc};"></div>
-                            <div class="thumbnailTitle">
-                                <div class="title" style="width: 360px; line-height: 2.2rem; max-width: 265px; min-width: 265px; font-size: 16px; font-weight: 500; max-height: 4.4rem;">${videoTitleInput}</div>
-                                <div class="videoDetails">
-                                    <div class="channelName">${channelNameInput}</div>
-                                    <div class="videoStats">${viewStatsInput}</div>
-                                </div>
-                            </div>
-                        </div>
-            `;
+            let viewsNumber = ((Math.random() * 16) + 1);
+            if (viewsNumber >= 10) {
+                viewsNumber = Math.floor(viewsNumber);
+            } else {
+                viewsNumber = viewsNumber.toFixed(1);
+                if (String(viewsNumber).endsWith('.0')) {
+                    viewsNumber = viewsNumber.slice(0, -2)
+                }
+            }
+            let videoViews = viewsNumber + 'K views';
+
+
+            let viewUploadTime = (Math.floor(Math.random() * 24) + 2) + ' hours ago';
+            let videoDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+
+            //webHomePageLargeThumbnails
+            OutputHTMLHomePageLarge += generateThumbnailsHomePageLarge(fileURL, videoDurationInput, videoViews, viewUploadTime);
+
+            //webHomePageSmallThumbnails
+            OutputHTMLHomePageSmall += generateThumbnailsHomePageSmall(fileURL, videoDurationInput, videoViews, viewUploadTime);
+
+            //webHistoryThumbnails
+            OutputHTMLWebHistory += generateThumbnailsHistory(fileURL, videoDurationInput, videoViews, videoDescription);
+
+            //webSidebarThumbnails
+            OutputHTMLSidebar += generateThumbnailsHomePageSidebar(fileURL, videoDurationInput, videoViews, viewUploadTime);
+
+            //mobileColumnThumbnails
+            OutputHTMLMobileColumn += generateThumbnailsMobileColumn(fileURL, videoDurationInput, videoViews, viewUploadTime);
+
+            //mobileFullWidthThumbnails
+            OutputHTMLMobileFullWidth += generateThumbnailsMobileFullWidth(fileURL, videoDurationInput, videoViews, viewUploadTime);
+
         }
 
-        outputHTML += `
-                    </div>        
+        // Display Thumbnails
+        document.getElementById('webHomePageLargeThumbnails').innerHTML = OutputHTMLHomePageLarge;
+        document.getElementById('webHomePageSmallThumbnails').innerHTML = OutputHTMLHomePageSmall;
+        document.getElementById('webSearchThumbnails').innerHTML = OutputHTMLWebHistory;
+        document.getElementById('webSidebarThumbnails').innerHTML = OutputHTMLSidebar;
+        document.getElementById('mobileColumnThumbnails').innerHTML = OutputHTMLMobileColumn;
+        document.getElementById('mobileFullWidthThumbnails').innerHTML = OutputHTMLMobileFullWidth;
+
+    }
+
+    function generateThumbnailsHomePageLarge(fileURL, videoDurationInput, videoViews, viewUploadTime) {
+
+        let outputHTML = `
+            <div class="thumbnailGroup groupBelow px-1">
+                <div class="thumbnailImageContainer">
+                    <img class="thumbnailImage" width="360" height="202" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
                 </div>
-            </div>
-        `;
-
-        return outputHTML;
-
-    }
-
-    function generateThumbnailsHomePageSmall(files) {
-
-        let sectionHeader = 'Web Home Page Small';
-        let outputHTML = `
-            <div class="col-12">
-                <div class="thumbnailComponent">
-                    <div class="componenTitle">${sectionHeader}</div> 
-                    <div class="xScrollContainer"> 
-        `;
-
-        for (let i = 0; i < numberOfThumbnails; i++) {
-
-            let fileURL = URL.createObjectURL(files[i]);
-            let viewStatsInput = (Math.floor(Math.random() * 16) + 1) + 'K views • ' + (Math.floor(Math.random() * 24) + 2) + ' hours ago';
-            let videoDurationInput = (Math.floor(Math.random() * 29) + 10) + ':' + (Math.floor(Math.random() * 29) + 10);
-
-            outputHTML += `
-                        <div class="thumbnailGroup groupBelow">
-                            <div class="thumbnailImageContainer">
-                                <img class="thumbnailImage" width="240" height="135" alt="thumbnail" src="${fileURL}">
-                                <div class="clearfix"></div>
-                                <div class="time-overlay">${videoDurationInput}</div>
-                            </div>
-                            <div class="avatar" style="background-image: ${channelLogoSrc};"></div>
-                            <div class="thumbnailTitle">
-                                <div class="title" style="width: 240px; max-width: 168px; min-width: 168px; font-weight: 500; max-height: 4rem;">${videoTitleInput}</div>
-                                <div class="videoDetails">
-                                    <div class="channelName">${channelNameInput}</div>
-                                    <div class="videoStats">${viewStatsInput}</div>
-                                </div>
-                            </div>
-                        </div>
-            `;
-        }
-
-        outputHTML += `
+                <div class="avatar" style="background-image: ${channelLogoSrc};"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 265px; max-height: 4.4rem; line-height: 2.2rem; font-size: 16px;">${videoTitleInput}</div>
+                    <div class="videoDetails">
+                        <div class="channelName">${channelNameInput}</div>
+                        <div class="videoStats">${videoViews} • ${viewUploadTime}</div>
                     </div>
                 </div>
             </div>
@@ -252,142 +376,124 @@
 
     }
 
-    function generateThumbnailsHomePageSidebar(files) {
+    function generateThumbnailsHomePageSmall(fileURL, videoDurationInput, videoViews, viewUploadTime) {
 
-        let sectionHeader = 'Web Sidebar';
         let outputHTML = `
-            <div class="col-4 sidebar">
-                <div class="thumbnailComponent">
-                    <div class="componenTitle">${sectionHeader}</div>
-                    <div class="yScrollContainer">
-        `;
-
-        for (let i = 0; i < numberOfThumbnails; i++) {
-
-            let fileURL = URL.createObjectURL(files[i]);
-            let viewStatsInput = (Math.floor(Math.random() * 16) + 1) + 'K views • ' + (Math.floor(Math.random() * 24) + 2) + ' hours ago';
-            let videoDurationInput = (Math.floor(Math.random() * 29) + 10) + ':' + (Math.floor(Math.random() * 29) + 10);
-
-            outputHTML += `
-                        <div class="thumbnailGroup groupBeside">
-                            <div class="thumbnailImageContainer">
-                                <img class="thumbnailImage" width="168" height="94" alt="thumbnail" src="${fileURL}">
-                                <div class="clearfix"></div>
-                                <div class="time-overlay">${videoDurationInput}</div>
-                            </div>
-                            <div class="avatar" style="display: none;"></div>
-                            <div class="thumbnailTitle">
-                                <div class="title" style="max-width: 202px; min-width: 202px; font-weight: 500; max-height: 4rem;">${videoTitleInput}</div>
-                                <div class="videoDetails">
-                                    <div class="channelName">${channelNameInput}</div>
-                                    <div class="videoStats">${viewStatsInput}</div>
-                                </div>
-                            </div>
-                        </div>
-            `;
-        }
-
-        outputHTML += `
-                    </div>    
+            <div class="thumbnailGroup groupBelow px-1">
+                <div class="thumbnailImageContainer">
+                    <img class="thumbnailImage" width="240" height="135" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
                 </div>
-            </div>
-        `;
-
-        return outputHTML;
-
-    }
-
-    function generateThumbnailsMobileFullWidth(files) {
-
-        let sectionHeader = 'Mobile Full Width';
-        let outputHTML = `
-        <div class="col-4 mobile-home">
-            <div class="thumbnailComponent">
-                <div class="componenTitle">${sectionHeader}</div>
-                <div class="yScrollContainer">
-        `;
-
-        for (let i = 0; i < numberOfThumbnails; i++) {
-
-            let fileURL = URL.createObjectURL(files[i]);
-            let viewStatsInput = (Math.floor(Math.random() * 16) + 1) + 'K views • ' + (Math.floor(Math.random() * 24) + 2) + ' hours ago';
-            let videoDurationInput = (Math.floor(Math.random() * 29) + 10) + ':' + (Math.floor(Math.random() * 29) + 10);
-
-            outputHTML += `
-                    <div class="thumbnailGroup groupBelow">
-                        <div class="thumbnailImageContainer">
-                            <img class="thumbnailImage" width="375" height="211" alt="thumbnail" src="${fileURL}">
-                            <div class="clearfix"></div>
-                            <div class="time-overlay">${videoDurationInput}</div>
-                        </div>
-                        <div class="avatar" style="background-image: ${channelLogoSrc};">
-                        </div>
-                        <div class="thumbnailTitle">
-                            <div class="title" style="width: 375px; max-width: 280px; min-width: 280px; font-size: 14px; max-height: 4rem;">${videoTitleInput}</div>
-                            <div class="videoDetails combined" style="font-size: 12px;">
-                                <div class="videoStats">${channelNameInput} • ${viewStatsInput}</div>
-                            </div>
-                        </div>
+                <div class="avatar" style="background-image: ${channelLogoSrc};"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 168px; max-height: 4rem;">${videoTitleInput}</div>
+                    <div class="videoDetails">
+                        <div class="channelName">${channelNameInput}</div>
+                        <div class="videoStats">${videoViews} • ${viewUploadTime}</div>
                     </div>
-            `;
-        }
-
-        outputHTML += `
                 </div>
             </div>
-        </div>
         `;
 
         return outputHTML;
 
     }
 
-    function generateThumbnailsMobileColumn(files) {
+    function generateThumbnailsHistory(fileURL, videoDurationInput, videoViews, videoDescription) {
 
-        let sectionHeader = 'Mobile Column';
         let outputHTML = `
-        <div class="col-4 mobile-column">
-            <div class="thumbnailComponent">
-                <div class="componenTitle">${sectionHeader}</div>
-                <div class="yScrollContainer">
-        `;
-
-        for (let i = 0; i < numberOfThumbnails; i++) {
-
-            let fileURL = URL.createObjectURL(files[i]);
-            let viewStatsInput = (Math.floor(Math.random() * 16) + 1) + 'K views • ' + (Math.floor(Math.random() * 24) + 2) + ' hours ago';
-            let videoDurationInput = (Math.floor(Math.random() * 29) + 10) + ':' + (Math.floor(Math.random() * 29) + 10);
-
-            outputHTML += `
-                
-                    <div class="thumbnailGroup groupBeside">
-                        <div class="thumbnailImageContainer">
-                            <img class="thumbnailImage" width="160" height="90" alt="thumbnail" src="${fileURL}">
-                            <div class="clearfix"></div>
-                            <div class="time-overlay">${videoDurationInput}</div>
-                        </div>
-                        <div class="avatar" style="display: none;"></div>
-                        <div class="thumbnailTitle">
-                            <div class="title" style="max-width: 150px; min-width: 150px; max-height: 4rem;">${videoTitleInput}</div>
-                            <div class="videoDetails" style="font-size: 12px;">
-                                <div class="channelName">${channelNameInput}</div>
-                                <div class="videoStats">${viewStatsInput}</div>
-                            </div>
-                        </div>
+            <div class="thumbnailGroup groupBeside px-1">
+                <div class="thumbnailImageContainer">
+                    <img class="thumbnailImage" width="246" height="138" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
+                </div>
+                <div class="avatar" style="display: none;"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 300px; max-height: 4.8rem; line-height: 2.4rem; font-size: 18px;">${videoTitleInput}</div>
+                    <div class="videoDetails" style="font-size: 1.2rem;">
+                        <div class="videoStats">${channelNameInput} • ${videoViews}</div>
+                        <div class="videoDescription clampLines">${videoDescription}</div>
                     </div>
-            `;
-        }
-
-        outputHTML += `
                 </div>
             </div>
-        </div>
         `;
 
         return outputHTML;
 
     }
 
+    function generateThumbnailsHomePageSidebar(fileURL, videoDurationInput, videoViews, viewUploadTime) {
+
+        let outputHTML = `
+            <div class="thumbnailGroup groupBeside">
+                <div class="thumbnailImageContainer" style="border-radius: 8px;">
+                    <img class="thumbnailImage" width="168" height="94" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
+                </div>
+                <div class="avatar" style="display: none;"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 202px; max-height: 4rem;">${videoTitleInput}</div>
+                    <div class="videoDetails" style="font-size: 1.2rem; line-height: 1.7rem;">
+                        <div class="channelName">${channelNameInput}</div>
+                        <div class="videoStats">${videoViews} • ${viewUploadTime}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return outputHTML;
+
+    }
+
+    function generateThumbnailsMobileColumn(fileURL, videoDurationInput, videoViews, viewUploadTime) {
+
+        let outputHTML = `
+            <div class="thumbnailGroup groupBeside">
+                <div class="thumbnailImageContainer" style="border-radius: 8px;">
+                    <img class="thumbnailImage" width="160" height="90" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
+                </div>
+                <div class="avatar" style="display: none;"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 150px; max-height: 4rem;">${videoTitleInput}</div>
+                    <div class="videoDetails" style="font-size: 1.2rem; line-height: 1.7rem;">
+                        <div class="channelName">${channelNameInput}</div>
+                        <div class="videoStats">${videoViews} • ${viewUploadTime}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return outputHTML;
+
+    }
+
+    function generateThumbnailsMobileFullWidth(fileURL, videoDurationInput, videoViews, viewUploadTime) {
+
+        let outputHTML = `
+            <div class="thumbnailGroup groupBelow">
+                <div class="thumbnailImageContainer" style="border-radius: 0;">
+                    <img class="thumbnailImage" width="375" height="211" alt="thumbnail" src="${fileURL}">
+                    <div class="clearfix"></div>
+                    <div class="timeOverlay">${videoDurationInput}</div>
+                </div>
+                <div class="avatar" style="background-image: ${channelLogoSrc};"></div>
+                <div class="thumbnailTitle">
+                    <div class="title" style="width: 280px; max-height: 4rem; font-size: 14px; font-weight: 400;">${videoTitleInput}</div>
+                    <div class="videoDetails combined" style="font-size: 12px;">
+                        <div class="videoStats">${channelNameInput} • ${videoViews} • ${viewUploadTime}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return outputHTML;
+
+    }
 
 </script>
 
