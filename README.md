@@ -1,5 +1,7 @@
 # YouTube Thumbnail Tester & Checker
 
+https://kurtyykins.github.io/youtube-thumbnail-tester-checker/
+
 Test and check thumbnails by seeing how they will most commonly appear on YouTube
 
 Places uploaded images into similar formatting to both web and mobile versions of YouTube
