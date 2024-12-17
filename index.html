@@ -55,6 +55,8 @@
                         <div class="col-12">
                             <button type="button" id="refreshInfo" class="btn btn-primary btn-lg mx-1"
                                 onclick="handleInfoChange()"><i class="fa fa fa-refresh"></i> Update</button>
+                                <button type="button" id="randomiseOrder" class="btn btn-primary btn-lg mx-1"
+                                onclick="handleRandomiseOrder()"><i class="fa fa fa-random"></i> Randomise</button>
                             <button type="button" id="darkModeToggle" class="btn btn-dark btn-lg mx-1"
                                 onclick="toggleDarkMode()"><i class="fa fa-moon-o"></i> Dark Mode</button>
                             <button type="button" class="btn btn-danger btn-lg mx-1" onclick="resetPage()"><i
@@ -192,6 +194,7 @@
     let numberOfThumbnails = 0;
     let channelLogoSrc = "url('Logo_Circle.png')";
     let channelNameInput = '', videoTitleInput = '';
+    let randomiseOrder = false;
 
     // Function to toggle between light and dark modes
     function toggleDarkMode() {
@@ -249,6 +252,13 @@
 
     }
 
+    function handleRandomiseOrder(event) {
+
+        randomiseOrder = true;
+        handleInfoChange(event);
+
+    }
+
     // Function to update display to show thumbnails if uploaded
     function handleInfoChange(event) {
 
@@ -266,6 +276,25 @@
 
         files = tempFileArray;
         numberOfThumbnails = files.length;
+
+        // Randomise order of files
+        if (randomiseOrder === true) {
+
+            let currentIndex = numberOfThumbnails;
+            let randomisedFiles = files;
+            while (currentIndex != 0) {
+
+                //Pick random array element
+                let randomIndex = randomNumber(0, currentIndex);
+                currentIndex--;
+                // Swap array elements
+                [randomisedFiles[currentIndex], randomisedFiles[randomIndex]] = [
+                randomisedFiles[randomIndex], randomisedFiles[currentIndex]];
+
+            }
+            files = randomisedFiles;
+            randomiseOrder = false;
+        }
 
         channelNameInput = document.getElementById('channelNameInput').value;
         videoTitleInput = document.getElementById('videoTitleInput').value;
@@ -492,6 +521,15 @@
         `;
 
         return outputHTML;
+
+    }
+
+    // FUNCTION TO GENERATE RANDOM NUMBERS
+    function randomNumber(min, max) {
+
+    // RETURN AN INTEGER BETWEEN 0 AND 100
+    let number = Math.floor(Math.random() * (max - min + 1) + min);
+    return number;
 
     }
 
